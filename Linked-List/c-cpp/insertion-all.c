@@ -1,11 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
+
+/**
+ * Structure representing a node in a linked list
+ * Contains data and a pointer to the next node
+ */
 struct Node
 {
     int data;
     struct Node *next;
 };
 
+/**
+ * Inserts a new node at the beginning of the linked list
+ * @param A Double pointer to the head of the linked list
+ * @param x The value to be inserted in the new node
+ */
 void insert_beginning(struct Node **A, int x)
 {
     struct Node *temp = (struct Node *)malloc(sizeof(struct Node));
@@ -22,6 +32,11 @@ void insert_beginning(struct Node **A, int x)
     (*A) = temp;
 }
 
+/**
+ * Inserts a new node at the end of the linked list
+ * @param A Double pointer to the head of the linked list
+ * @param x The value to be inserted in the new node
+ */
 void insert_end(struct Node **A, int x)
 {
     struct Node *temp = (struct Node *)malloc(sizeof(struct Node));
@@ -40,6 +55,12 @@ void insert_end(struct Node **A, int x)
     temp_traverse->next = temp;
 }
 
+/**
+ * Inserts a new node at a specified position in the linked list
+ * @param A Double pointer to the head of the linked list
+ * @param x The value to be inserted in the new node
+ * @param position The position at which to insert the new node (1-based indexing)
+ */
 void insert_middle(struct Node **A, int x, int position)
 {
     struct Node *temp = (struct Node *)malloc(sizeof(struct Node));
@@ -51,14 +72,20 @@ void insert_middle(struct Node **A, int x, int position)
         *A = temp;
         return;
     }
-    // printf("insert middle: case 2\n");
+    else if (position == 1)
+    {
+        //printf("insert middle: case 2\n");
+        insert_beginning(A, x);
+        return;
+    }
+    // printf("insert middle: case 3\n");
     struct Node *temp_traverse = *A;
     int i = 1;
     while (i < position - 1)
     {
         if (temp_traverse->next == NULL)
         {
-            printf("Position out of bound. Exiting...");
+            printf("Position out of bound. Exiting...\n");
             return;
         }
         temp_traverse = temp_traverse->next;
@@ -68,6 +95,10 @@ void insert_middle(struct Node **A, int x, int position)
     temp_traverse->next = temp;
 }
 
+/**
+ * Traverses the linked list and prints all elements
+ * @param A Pointer to the head of the linked list
+ */
 void traverse(struct Node *A)
 {
     if (A == NULL)
@@ -86,6 +117,9 @@ void traverse(struct Node *A)
     printf("%d\n", temp_traverse->data);
 }
 
+/**
+ * Main function to demonstrate linked list operations
+ */
 int main()
 {
     struct Node *A = NULL;
@@ -96,8 +130,9 @@ int main()
     insert_beginning(&A, 0);  // 0, 1, 2, 3
     insert_end(&A, 4);        // 0, 1, 2, 3, 4
     insert_end(&A, 5);        // 0, 1, 2, 3, 4, 5
-    insert_middle(&A, 10, 3); // 0, 1, 10, 2, 3, 4, 5
-    insert_middle(&A, 55, 2); // 0, 1, 10, 2, 3, 4, 5
+    insert_middle(&A, 10, 4); // 0, 1, 2, 10, 3, 4, 5
+    traverse(A);
+    insert_middle(&A, 55, 1); // 55, 0, 1, 2, 10, 3, 4, 5
     traverse(A);
     return 0;
 }
