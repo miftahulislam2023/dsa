@@ -7,6 +7,8 @@
 3.  Head has no data but it points to the first node of the list
 4.  Last node has data but it points to NULL (0) which indicates the end of the list
 
+![Structure of a Linked List](./media/structure.jpg)
+
 ## Linked List in C/C++:
 ```c
 #include <stdio.h>
