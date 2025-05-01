@@ -1,15 +1,19 @@
 # List
-## Basic Characteristics:
+
+## Basic Characteristics
+
 1. Store a given number of elements of a given data-type
 2. Read element at a position
 3. Write/modify element at a position
 4. Insert element at a position
 5. Delete element at a position
-## Operations:
+
+## Operations
+
 1. Search for an element in the list
 2. Sort the list
 3. Reverse the list
-4.  Merge two lists
+4. Merge two lists
 5. Split a list into two lists
 6. Copy a list
 7. Clear a list
@@ -28,7 +32,9 @@
 20. Find the index of a given element in a list
 21. Find the last index of a given element in a list
 22. Find the first index of a given element in a list...
-## List in C/C++:
+
+## List in C/C++
+
 ```c
 #include <stdio.h>
 #define MAXSIZE 100 // Maximum size of the list
@@ -37,7 +43,9 @@ struct List {
     int end = -1; //initial end of the list
 };
  ```
-## Benefits and Drawbacks of List:
+
+## Benefits and Drawbacks of List
+
 1. Easy to implement and use
 2. Read - O(1) time complexity
 3. Modify - O(1) time complexity
